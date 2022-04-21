@@ -6,43 +6,35 @@ export default class PortfolioContainer extends Component {
     constructor() {
         super();
 
-      
+      this.state ={
+          pageTitle: "Welcome to my profolio",
+          data: [
+              {title:"Shell"},
+              {title: "Bp"} ,
+              {title:"Exxon"},
+        
+        ]
+      }
     }
     portfolioItems() {
-        const data = ["Shell", "Bp", "Exxon"];
-
-        return data.map(item => {
-            return <PortfolioItem thanos={item}  url={"google.com"} />
+        
+        return this.state.data.map(item => {
+            return <PortfolioItem thanos={item.title}  url={"google.com"} />
         });
     }
 
-    portfolioItems2() {
-        const data = ["United States ", "British", "Swedish"];
-
-        return data.map(item => {
-            return <PortfolioItem mark={item} />
-        });
-    }
-
-    portfolioItems3() {
-        const data = ["Alabama classs ", "Thames class", "Norse Class"];
-
-        return data.map(item => {
-            return <PortfolioItem jarvis={item} />
-        });
-    }
+    
 
     //State
     //Lifecycle hooks
     render() {
         return(
             <div>
-                <h2> Portfolio goes here...</h2>
+                <h2>{this.state.pageTitle}</h2>
                 
 
                 {this.portfolioItems()}
-                {this.portfolioItems2()}
-                {this.portfolioItems3()}
+               
             </div>
         )
 

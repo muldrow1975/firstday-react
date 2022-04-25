@@ -24,7 +24,11 @@ export default class PortfolioContainer extends Component {
     }
 
     
-
+    handlePageTitleUpdate(){
+        this.setState({
+            pageTitle: "Thanos Rules"
+        });
+    }
     //State
     //Lifecycle hooks
     render() {
@@ -35,6 +39,9 @@ export default class PortfolioContainer extends Component {
 
                 {this.portfolioItems()}
                
+                <hr/>
+
+                <button >Change Title</button>
             </div>
         )
 

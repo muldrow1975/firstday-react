@@ -15,6 +15,8 @@ export default class PortfolioContainer extends Component {
         
         ]
       }
+
+      this.handlePageTitleUpdate = this.handlePageTitleUpdate.bind(this)
     }
     portfolioItems() {
         
@@ -41,7 +43,7 @@ export default class PortfolioContainer extends Component {
                
                 <hr/>
 
-                <button >Change Title</button>
+                <button onClick ={this.handlePageTitleUpdate} > changeTitleUpdate </button>
             </div>
         )
 

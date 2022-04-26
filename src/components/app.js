@@ -6,20 +6,21 @@ import {
   Route
 } from "react-router-dom";
 
-import PortfolioContainer from "./portfolio-items/portfolio-container";
+
 import NavigationContainer from "./navigation-container/navigation-container";
 import Home  from "./pages/home";
 import About from "./pages/about";
 import Contact from "./pages/contact";
 import Blog from "./pages/blog";
+import PortfolioDetail from "./portfolio-items/portfolio-detail";
 
 export default class App extends Component {
   render() {
     return (
       <div className="app">
         <Router>
-           <div>
-           <h1>Iron Studios Portfolio</h1>
+          <div>
+            <h1>Iron Studios Portfolio</h1>
             <div>{moment().format("MMMM Do YYYY, h:mm:ss a")}</div>
             <NavigationContainer />
 
@@ -28,6 +29,7 @@ export default class App extends Component {
                 <Route path="/about-me" component={About} />
                 <Route path="/contact" component={Contact} />
                 <Route path="/blog" component={Blog} />
+                <Route path="/portfolio/:slug" component={PortfolioDetail} />
             </Switch>
           </div> 
         </Router>

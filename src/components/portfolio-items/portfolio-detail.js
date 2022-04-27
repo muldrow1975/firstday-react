@@ -8,7 +8,7 @@ export default class PortfolioDetail extends Component {
     render(){
         return(
             <div>
-                <h2>Portfolio Detail for {this.props.match.params.slug}</h2>
+                <h2>Portfolio Detail for {props.match.params.slug}</h2>
             </div>
         );
     }

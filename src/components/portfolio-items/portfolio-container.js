@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 import PortfolioItem from "./portfolio-item";
 
@@ -7,14 +8,9 @@ export default class PortfolioContainer extends Component {
     super();
 
     this.state = {
-      pageTitle: "Welcome to the Center",
+      pageTitle: "Welcome to the Center ",
       isLoading: false,
-      data: [
-        { title: "Quip", category: "eCommerce", slug: "quip"},
-        { title: "Eventbrite", category: "Scheduling", slug:"eventbrite" },
-        { title: "Ministry Safe", category: "Enterprise", slug:"ministry-safe" },
-        { title: "SwingAway", category: "eCommerce", slug:"swingaway"},
-      ]
+      data: []
     };
 
     this.handleFilter = this.handleFilter.bind(this);
@@ -27,11 +23,40 @@ export default class PortfolioContainer extends Component {
       })
     });
   }
+    
+
+
+  getPortfolioItems() {
+    axios
+      .get("https://nelson.devcamp.space/portfolio/portfolio_items")
+      .then(response => {
+        this.setState({
+          data: response.data.portfolio_items
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+
+
+  handleFilter(filter) {
+    this.setState({
+      data: this.state.data.filter(item => {
+        return item.category === filter;
+      })
+    });
+  }
 
   portfolioItems() {
     return this.state.data.map(item => {
-      return <PortfolioItem title={item.title} url={"google.com"}  slug={item.slug} />
+      return <PortfolioItem key ={item.id} title={item.name} url={item.url}  slug={item.id} />
     });
+  }
+
+  componentDidMount(){
+    this.getPortfolioItems();
   }
 
   render() {
